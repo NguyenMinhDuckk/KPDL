@@ -3,7 +3,6 @@ from itertools import combinations
 
 
 def main():
-    clear_screen()
     
     data = load_dataset_from_csv("./Data/supermarket.csv")
     
@@ -169,12 +168,6 @@ def generate_association_rules(frequent_itemsets, min_confidence):
 # Sinh tất cả các tổ hợp (combinations) từ danh sách các phần tử
 def generate_combinations(items, k):
     return [frozenset(comb) for comb in combinations(items, k)]
-
-
-# Hàm xóa màn hình (không thực sự hoạt động trên mọi hệ thống)
-def clear_screen():
-    print("\033[H\033[2J", end="")
-
 
 if __name__ == "__main__":
     main()
