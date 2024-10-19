@@ -5,7 +5,7 @@ from itertools import combinations
 def main():
     clear_screen()
     
-    data = load_dataset_from_csv("./Data/supermarket_sau_txl.csv")
+    data = load_dataset_from_csv("./Data/supermarket.csv")
     
     if data is None:
         return
@@ -25,19 +25,19 @@ def print_frequent_itemsets(frequent_itemsets):
     sorted_itemsets = sorted(frequent_itemsets.items(), key=lambda x: (len(x[0]), sorted(x[0])))
 
     print("Frequent Itemsets:")
-    print("-----------------------------------------------------------------")
-    print(f"| {'STT':<2} | {'Itemset':<45} | {'Support'} |")
-    print("|-----+-----------------------------------------------+---------|")
+    print("------------------------------------------------------------------------------------")
+    print(f"| {'STT':<2} | {'Itemset':<62} | {'Support':<9} |")
+    print("|-----+----------------------------------------------------------------+-----------|")
 
     stt = 1
     for itemset, support in sorted_itemsets:
         # Sắp xếp các phần tử trong itemset theo thứ tự bảng chữ cái
         itemset_list = sorted(itemset)
         itemset_str = ", ".join(itemset_list)  # Ghép các phần tử lại thành chuỗi
-        print(f"| {stt:<2}  | [{itemset_str}]{' ' * (43 - len(itemset_str))} | {support*100:>7.2f}%  |")
+        print(f"| {stt:<2}  | [{itemset_str}]{' ' * (60 - len(itemset_str))} | {support*100:>7.2f}%  |")
         stt += 1
 
-    print("-----------------------------------------------------------------")
+    print("------------------------------------------------------------------------------------")
 
 
 def print_association_rules(association_rules):
@@ -46,7 +46,7 @@ def print_association_rules(association_rules):
 
     print()
     print("Association Rules:")
-    print("-------------------------------------------------------------------------------")
+    print("--------------------------------------------------------------------------------------")
 
     stt = 1
     for rule in association_rules:
@@ -59,7 +59,7 @@ def print_association_rules(association_rules):
 
         stt += 1
 
-    print("-------------------------------------------------------------------------------")
+    print("--------------------------------------------------------------------------------------")
 
 
 # Hàm đọc dữ liệu từ file CSV
